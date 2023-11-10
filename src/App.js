@@ -1,25 +1,55 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { useEffect } from 'react';
+import ItemList from './ItemList';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [apiUrl, setApiUrl] = useState('https://jsonplaceholder.typicode.com/users');
+	const [items, setItems] = useState([]);
+
+	const handleClick1 = () => {
+		setApiUrl('https://jsonplaceholder.typicode.com/posts');
+	};
+	const handleClick2 = () => {
+		setApiUrl('https://jsonplaceholder.typicode.com/comments');
+	};
+	const handleClick3 = () => {
+		setApiUrl('https://jsonplaceholder.typicode.com/users');
+	};
+
+	useEffect(() => {
+		const fetchItems = async () => {
+			try {
+				const response = await fetch(apiUrl);
+				const listItems = await response.json();
+				setItems(listItems);
+				console.log(listItems);
+			} catch (err) {
+				console.log(err.stack);
+			}
+		};
+		fetchItems();
+	}, [apiUrl]);
+
+	return (
+		<div className="App">
+			<main>
+				<div className="buttons">
+					<button onClick={handleClick3} className="usersButton">
+						users
+					</button>
+					<button onClick={handleClick1} className="postsButton">
+						posts
+					</button>
+					<button onClick={handleClick2} className="commentsButton">
+						comments
+					</button>
+				</div>
+
+				<ItemList items={items} />
+			</main>
+		</div>
+	);
 }
 
 export default App;
