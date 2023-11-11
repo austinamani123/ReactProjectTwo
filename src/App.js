@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './App.css';
+import './index.css';
 import { useEffect } from 'react';
-import ItemList from './ItemList';
+import Table from './Table';
 
 function App() {
 	const [apiUrl, setApiUrl] = useState('https://jsonplaceholder.typicode.com/users');
@@ -33,7 +33,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<main>
+			<main className="main">
 				<div className="buttons">
 					<button onClick={handleClick3} className="usersButton">
 						users
@@ -45,8 +45,10 @@ function App() {
 						comments
 					</button>
 				</div>
-
-				<ItemList items={items} />
+				<div className="ItemList">
+					{/* <ItemList items={items} /> */}
+					<Table items={items} />
+				</div>
 			</main>
 		</div>
 	);
