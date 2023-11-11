@@ -1,0 +1,43 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.buttons {
+	width: 100%;
+	position: fixed;
+	margin: 0;
+}
+.usersButton {
+	width: 33.33%;
+	height: 32px;
+}
+.postsButton {
+	width: 33.33%;
+	height: 32px;
+}
+.commentsButton {
+	width: 33.33%;
+	height: 32px;
+}
+.usersButton:focus {
+	background-color: black;
+	color: white;
+	border: 1px;
+}
+.postsButton:focus {
+	background-color: black;
+	color: white;
+	border: 1px;
+}
+.commentsButton:focus {
+	background-color: black;
+	color: white;
+	border: 1px;
+}
+.ItemList {
+	margin-left: 24px;
+	padding-top: 64px;
+}
+.cell {
+	border: 1px solid black;
+}
